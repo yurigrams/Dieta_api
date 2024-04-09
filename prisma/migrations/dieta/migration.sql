@@ -5,6 +5,7 @@ CREATE TABLE "refeicao" (
     "descricao" TEXT NOT NULL,
     "dataHora" TIMESTAMP NOT NULL,
     "dentroDieta" BOOLEAN NOT NULL,
+    "idUser" TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     
     CONSTRAINT "refeicao_pkey" PRIMARY KEY ("id")
 );

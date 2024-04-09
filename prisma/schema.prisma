@@ -26,6 +26,7 @@ model Refeicao{
   descricao String
   dataHora DateTime
   dentroDieta Boolean
+  idUser String 
   @@map("refeicao")
 }
 
