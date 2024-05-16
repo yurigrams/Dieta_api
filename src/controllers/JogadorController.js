@@ -2,23 +2,25 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 
-class UsersController{
+class JogadorController{
 
 
    async create(request, response){
        try{
-           const { name, email  } = request.body
+           const { name, idade, posicao, nacionalidade  } = request.body
 
 
-           const user = await prisma.user.create({
+           const jogador = await prisma.jogador.create({
                data: {
                    name,
-                   email,
+                   idade,
+                   posicao,
+                   nacionalidade,
                },
            })
 
 
-           response.json(user)
+           response.json(jogador)
        }catch (err) {
            return response.status(409).send()
        }
@@ -26,9 +28,9 @@ class UsersController{
 
    async show(request, response){
         try{
-            const users = await prisma.user.findMany();
+            const jogadores = await prisma.jogador.findMany();
 
-            response.json(users)
+            response.json(jogadores)
             
         }catch (err) { 
             return response.status(409).send()
@@ -38,16 +40,18 @@ class UsersController{
     async update(request, response){
         try{
             
-            const { name, email } = request.body
+            const { name, idade, posicao, nacionalidade  } = request.body
             const { id } = request.params
             
-            const result = await prisma.user.update({
+            const result = await prisma.jogador.update({
                 where: {
                     id: id,
                 },
                 data: {
                     name: name,
-                    email: email,
+                    idade: idade,
+                    posicao: posicao,
+                    nacionalidade: nacionalidade,
                 },
             });
 
@@ -63,11 +67,10 @@ class UsersController{
         
         try{
             const { id } = request.params
-            //const { id } = request.body
             console.log(`id: ${id}`)
 
         
-            const deleteUser = await prisma.user.delete({
+            const deleteJogador = await prisma.jogador.delete({
                 where: {
                     id: id,
                 },
@@ -83,4 +86,4 @@ class UsersController{
 }
 
 
-module.exports = UsersController
+module.exports = JogadorController

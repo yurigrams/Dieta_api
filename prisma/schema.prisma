@@ -13,20 +13,31 @@ datasource db {
   url      = "postgresql://docker:docker@localhost:5432/api_express_prisma"
 }
 
-model User {
+model Jogador {
   id String @id @default(uuid())
-  name String
-  email String
-  @@map("users")
+  nome String
+  idade Int
+  posicao String
+  nacionalidade String
+  @@map("jogador")
 }
 
-model Refeicao{
+model Time{
   id String @id @default(uuid())
-  name String
-  descricao String
-  dataHora DateTime
-  dentroDieta Boolean
-  idUser String 
-  @@map("refeicao")
+  nome String
+  nacionalidade String
+  fundacao Int
+  tecnico String
+  idJogador String 
+  @@map("time")
 }
 
+model Partida{
+  id String @id @default(uuid())
+  data DateTime
+  local String
+  placar String
+  idTimeDaCasa String
+  idTimeVisitante String
+  @@map("partida")
+}

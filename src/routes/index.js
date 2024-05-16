@@ -1,16 +1,18 @@
 const { Router } = require('express')
 
 
-const usersRoutes = require('./users.routes')
-const refeicaoRoutes = require('./refeicao.routes')
+const jogadorRoutes = require('./jogador.routes')
+const timeRoutes = require('./time.routes')
+const partidaRoutes = require('./patida.routes')
 
 
 const routes = Router()
 
 
 // Rotas dos controllers
-routes.use('/users', usersRoutes)
-routes.use('/refeicao', refeicaoRoutes)
+routes.use('/jogador', jogadorRoutes)
+routes.use('/time', timeRoutes)
+routes.use('/partida', partidaRoutes)
 
 
 module.exports = routes
