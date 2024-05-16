@@ -3,7 +3,7 @@ const { Router } = require('express')
 
 const jogadorRoutes = require('./jogador.routes')
 const timeRoutes = require('./time.routes')
-const partidaRoutes = require('./patida.routes')
+const partidaRoutes = require('./partida.routes');
 
 
 const routes = Router()
